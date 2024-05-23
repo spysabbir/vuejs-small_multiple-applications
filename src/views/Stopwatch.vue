@@ -20,35 +20,35 @@ const interval = ref(null);
 const isRunning = ref(false);
 
 const formattedTime = computed(() => {
-const totalMilliseconds = isRunning.value ? Date.now() - startTime.value + currentTime.value : currentTime.value;
-const minutes = Math.floor(totalMilliseconds / (1000 * 60));
-const seconds = Math.floor((totalMilliseconds % (1000 * 60)) / 1000);
-const milliseconds = Math.floor((totalMilliseconds % 1000) / 10);
-return `${padTime(minutes)}:${padTime(seconds)}.${padTime(milliseconds)}`;
+    const totalMilliseconds = isRunning.value ? Date.now() - startTime.value + currentTime.value : currentTime.value;
+    const minutes = Math.floor(totalMilliseconds / (1000 * 60));
+    const seconds = Math.floor((totalMilliseconds % (1000 * 60)) / 1000);
+    const milliseconds = Math.floor((totalMilliseconds % 1000) / 10);
+    return `${padTime(minutes)}:${padTime(seconds)}.${padTime(milliseconds)}`;
 });
 
 const padTime = (value) => {
-return value.toString().padStart(2, '0');
+    return value.toString().padStart(2, '0');
 };
 
 const toggleTimer = () => {
-if (isRunning.value) {
-    clearInterval(interval.value);
-    currentTime.value = Date.now() - startTime.value + currentTime.value;
-} else {
-    startTime.value = Date.now();
-    interval.value = setInterval(() => {
-    currentTime.value = Date.now() - startTime.value + currentTime.value;
-    }, 10);
-}
-isRunning.value = !isRunning.value;
+    if (isRunning.value) {
+        clearInterval(interval.value);
+        currentTime.value = Date.now() - startTime.value + currentTime.value;
+    } else {
+        startTime.value = Date.now();
+        interval.value = setInterval(() => {
+        currentTime.value = Date.now() - startTime.value + currentTime.value;
+        }, 10);
+    }
+    isRunning.value = !isRunning.value;
 };
 
 const resetTimer = () => {
-clearInterval(interval.value);
-startTime.value = 0;
-currentTime.value = 0;
-isRunning.value = false;
+    clearInterval(interval.value);
+    startTime.value = 0;
+    currentTime.value = 0;
+    isRunning.value = false;
 };
 </script>
 

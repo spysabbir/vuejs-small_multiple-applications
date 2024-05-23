@@ -40,6 +40,7 @@
 
 <script setup>
 import { ref, onUnmounted } from 'vue';
+import showAlert from '../helpers/alert';
 
 const hours = ref(0);
 const minutes = ref(0);
@@ -52,7 +53,7 @@ const showAlarm = ref(false);
 const startCountdown = () => {
   const totalSeconds = (hours.value * 3600) + (minutes.value * 60) + (seconds.value);
   if (totalSeconds <= 0) {
-    alert('Please set a valid time to start the countdown.');
+    showAlert('error', 'Please set a valid time to start the countdown.');
     return;
   }
 
@@ -66,6 +67,7 @@ const startCountdown = () => {
       clearInterval(countdownInterval.value);
       playAlarm();
       showAlarm.value = true;
+      showAlert('success', 'Countdown completed!');
     }
   }, 1000);
 };

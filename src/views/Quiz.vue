@@ -8,6 +8,7 @@
             <p class="text-lg">Every Question Mark: {{ 10 }}</p>
             <p class="text-lg">Total Marks: {{ totalMarks }}</p>
             <p class="text-lg">Pass Marks: 50</p>
+            <p class="text-lg">Every Question Answer Time: 15s</p>
             <p class="text-lg">Total Time: {{ 15 * questions.length }}s</p>
             <button @click="startQuiz" class="bg-blue-500 text-white px-4 py-2 mt-5 rounded hover:bg-blue-600">
                 Start Quiz

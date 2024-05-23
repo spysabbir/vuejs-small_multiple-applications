@@ -31,6 +31,7 @@
 </template>
 <script setup>
 import { ref } from 'vue';
+import showAlert from '../helpers/alert';
 
 const currencies = ref(['USD', 'EUR', 'BDT', 'INR']);
 const fromCurrency = ref('USD');
@@ -40,7 +41,7 @@ const result = ref(null);
 
 const convert = () => {
     if (amount.value <= 0) {
-        alert('Amount must be greater than 0');
+        showAlert('error', 'Amount must be greater than 0');
         return;
     }
 

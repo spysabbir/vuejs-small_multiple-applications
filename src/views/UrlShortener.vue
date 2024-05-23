@@ -33,16 +33,16 @@ if (!longUrl.value) {
 
 try {
     const response = await fetch('https://api-ssl.bitly.com/v4/shorten', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-        'Authorization': '247b66128a28ce6d259e0b0a67f7ef5737453c0e'
-    },
-    body: JSON.stringify({ long_url: longUrl.value })
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': '247b66128a28ce6d259e0b0a67f7ef5737453c0e'
+        },
+        body: JSON.stringify({ long_url: longUrl.value })
     });
 
     if (!response.ok) {
-    throw new Error('Failed to shorten URL');
+        throw new Error('Failed to shorten URL');
     }
 
     const data = await response.json();
@@ -55,7 +55,7 @@ try {
 };
 
 const copyToClipboard = () => {
-const el = document.createElement('textarea');
+    const el = document.createElement('textarea');
     el.value = shortenedUrl.value;
     document.body.appendChild(el);
     el.select();

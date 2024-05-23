@@ -26,6 +26,7 @@
 
 <script setup>
 import { ref } from 'vue';
+import showAlert from '../helpers/alert';
 
 const heightFeet = ref(null);
 const heightInches = ref(null);
@@ -34,34 +35,34 @@ const bmi = ref(null);
 
 const calculateBMI = () => {
     if (validateInputs()) {
-    const heightInchesTotal = heightFeet.value * 12 + heightInches.value;
-    const heightMeters = heightInchesTotal * 0.0254;
-    const bmiValue = weight.value / (heightMeters * heightMeters);
-    bmi.value = bmiValue;
+        const heightInchesTotal = heightFeet.value * 12 + heightInches.value;
+        const heightMeters = heightInchesTotal * 0.0254;
+        const bmiValue = weight.value / (heightMeters * heightMeters);
+        bmi.value = bmiValue;
     }
 };
 
 const validateInputs = () => {
     if (!heightFeet.value || !heightInches.value || !weight.value) {
-    alert("Please fill in all fields.");
-    return false;
+        showAlert('error', 'Please fill in all fields.');
+        return false;
     }
     if (heightFeet.value <= 0 || heightInches.value <= 0 || weight.value <= 0) {
-    alert("Values must be greater than zero.");
-    return false;
+        showAlert('error', 'Values must be greater than zero.');
+        return false;
     }
     return true;
 };
 
 const getBMIClassification = (bmiValue) => {
     if (bmiValue < 18.5) {
-    return 'Underweight';
+        return 'Underweight';
     } else if (bmiValue >= 18.5 && bmiValue < 25) {
-    return 'Normal weight';
+        return 'Normal weight';
     } else if (bmiValue >= 25 && bmiValue < 30) {
-    return 'Overweight';
+        return 'Overweight';
     } else {
-    return 'Obese';
+        return 'Obese';
     }
 };
 </script>

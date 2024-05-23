@@ -41,32 +41,32 @@ import { ref, computed } from 'vue';
 const expression = ref('');
 
 const appendToExpression = (char) => {
-expression.value += char;
+    expression.value += char;
 };
 
 const clearExpression = () => {
-expression.value = '';
+    expression.value = '';
 };
 
 const clearLastCharacter = () => {
-expression.value = expression.value.slice(0, -1);
+    expression.value = expression.value.slice(0, -1);
 };
 
 const calculateResult = () => {
-try {
-    expression.value = eval(expression.value).toString();
-} catch (error) {
-    expression.value = 'Error';
-}
+    try {
+        expression.value = eval(expression.value).toString();
+    } catch (error) {
+        expression.value = 'Error';
+    }
 };
 
 const calculateSquareRoot = () => {
-try {
-    const result = Math.sqrt(eval(expression.value));
-    expression.value = result.toString();
-} catch (error) {
-    expression.value = 'Error';
-}
+    try {
+        const result = Math.sqrt(eval(expression.value));
+        expression.value = result.toString();
+    } catch (error) {
+        expression.value = 'Error';
+    }
 };
 
 const isCalculationDisabled = computed(() => {
