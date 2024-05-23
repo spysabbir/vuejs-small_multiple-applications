@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "sweetalert2": "^11.11.0",
     "vue": "^3.3.11",
     "vue-router": "^4.3.2"
   },
