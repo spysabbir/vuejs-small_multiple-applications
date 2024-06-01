@@ -12,6 +12,7 @@ import Weather from './../views/Weather.vue'
 import Stopwatch from './../views/Stopwatch.vue'
 import Todo from './../views/Todo.vue'
 import UrlShortener from './../views/UrlShortener.vue'
+import Ticket from './../views/Ticket.vue'
 
 
 const routes = [
@@ -27,6 +28,7 @@ const routes = [
   { path: '/stopwatch', component: Stopwatch },
   { path: '/todo', component: Todo },
   { path: '/url-shortener', component: UrlShortener },
+  { path: '/ticket', component: Ticket },
 ]
 
 const router = createRouter({

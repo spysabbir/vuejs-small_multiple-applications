@@ -18,6 +18,7 @@
         <router-link to="/photo-gallery" class="btn">Photo Gallery</router-link>
         <router-link to="/quiz" class="btn">Quiz</router-link>
         <router-link to="/todo" class="btn">Todo</router-link>
+        <router-link to="/ticket" class="btn">Ticket</router-link>
     </div>
 
     <hr class="my-5">
