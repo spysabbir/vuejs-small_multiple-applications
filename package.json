@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "mathjs": "^13.0.0",
     "sweetalert2": "^11.11.0",
     "vue": "^3.3.11",
     "vue-router": "^4.3.2"

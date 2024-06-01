@@ -27,7 +27,7 @@
             <button @click="appendToExpression('*')" :disabled="isOperatorDisabled" class="col-span-1 btn btn-yellow">*</button>
 
             <button @click="calculateSquareRoot" :disabled="isOperatorDisabled" class="col-span-1 btn">√</button>
-            <button @click="appendToExpression(' / 100')" :disabled="isOperatorDisabled" class="col-span-1 btn">%</button>
+            <button @click="appendToExpression('/100')" :disabled="isOperatorDisabled" class="col-span-1 btn">%</button>
             <button @click="clearLastCharacter" class="col-span-1 btn btn-red">DEL</button>
             <button @click="appendToExpression('/')" :disabled="isOperatorDisabled" class="col-span-1 btn btn-yellow">/</button>
         </div>
@@ -37,6 +37,7 @@
 
 <script setup>
 import { ref, computed } from 'vue';
+import { evaluate } from 'mathjs';
 
 const expression = ref('');
 
@@ -54,7 +55,7 @@ const clearLastCharacter = () => {
 
 const calculateResult = () => {
     try {
-        expression.value = eval(expression.value).toString();
+        expression.value = evaluate(expression.value).toString();
     } catch (error) {
         expression.value = 'Error';
     }
@@ -62,7 +63,7 @@ const calculateResult = () => {
 
 const calculateSquareRoot = () => {
     try {
-        const result = Math.sqrt(eval(expression.value));
+        const result = Math.sqrt(evaluate(expression.value));
         expression.value = result.toString();
     } catch (error) {
         expression.value = 'Error';
